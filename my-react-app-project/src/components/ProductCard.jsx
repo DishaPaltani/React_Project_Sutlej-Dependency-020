@@ -3,7 +3,7 @@ import './ProductCard.module.css';
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="card">
+    <div style={{display:flex}} className="card">
       <img src={product.image_url} alt={product.title} />
       <div className="card-body">
         <h5 className="card-title">{product.title}</h5>
