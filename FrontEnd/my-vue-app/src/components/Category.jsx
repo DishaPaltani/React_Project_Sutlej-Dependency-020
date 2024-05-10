@@ -1,4 +1,4 @@
-import './css-compo/Category.css'
+import './css-compo/Category.css';
 
 const Category = () => {
   return (
