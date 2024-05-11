@@ -175,7 +175,7 @@ body{
   }
 
   /* Best Sellers */
-  .Best-sellers-heading{
+  .best-sellers-heading{
     font-family: sans-serif;
     text-align: center;
     color: rgb(75, 74, 74);
@@ -185,8 +185,8 @@ body{
     align-items: center;
 
   }
-.Best-sellers-heading::before,
-.Best-sellers-heading::after {
+.best-sellers-heading::before,
+.best-sellers-heading::after {
     content: "";
     height: 2px;
     background-color: black;
@@ -204,15 +204,161 @@ body{
 }
 
 .product-card img {
+    
     width: 100%;
     height: auto;
     border-radius: 8px;
+    
+    
 }
 
 .product-info {
     padding: 10px;
 }
 
-.best-sellers-heading {
+
+.Product-name{
+    font-family: sans-serif;
+    color: rgb(75, 74, 74);
+    font-weight: lighter;
+
+}
+.Product-price{
+    font-family: sans-serif;
+    font-weight:  bold;
+}
+.cart-button{
+    padding: 10px 15px;
+    background-color: #A54186;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    font-family: sans-serif;
+    font-weight: bolder;
+
+}
+/* 
+features Brands */
+.Brands-heading{
+    font-family: sans-serif;
+    text-align: center;
+    color: rgb(75, 74, 74);
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+  }
+.Brands-heading::before,
+.Brands-heading::after {
+    content: "";
+    height: 2px;
+    background-color: black;
+    display: block;
+}
+.Brands-title:hover {
+    color: #A54186;
+    
+}
+.Brands-title {
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.Brands-card {
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    text-align: center;
+    gap: 20px;
+}
+/* Beer &  Mead Products */
+
+.beer-carousel-container{
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto;
+
+}
+
+.beer-sellers-heading{
+    font-family: sans-serif;
+    text-align: center;
+    color: rgb(75, 74, 74);
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+  }
+.beer-sellers-heading::before,
+.beer-sellers-heading::after {
+    content: "";
+    height: 2px;
+    background-color: black;
+    display: block;
+}
+.beer-card {
     text-align: center;
 }
+
+.beer-card img {
+    
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    
+    
+}
+
+.beer-info {
+    padding: 10px;
+}
+
+
+.beer-name{
+    font-family: sans-serif;
+    color: rgb(75, 74, 74);
+    font-weight: lighter;
+
+}
+.beer-price{
+    font-family: sans-serif;
+    font-weight:  bold;
+}
+/* discover wines */
+
+.discoverWine-heading{
+    font-family: sans-serif;
+    text-align: center;
+    color: rgb(75, 74, 74);
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+  }
+.discoverWine-heading::before,
+.discoverWine-heading::after {
+    content: "";
+    height: 2px;
+    background-color: black;
+    display: block;
+}
+.discoverWine-title:hover {
+    color: #A54186;
+    
+}
+.discoverWine-title {
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.discoverWine-card {
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    text-align: center;
+    gap: 20px;
+}
+
+

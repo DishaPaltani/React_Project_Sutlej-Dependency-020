@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
-import { Gifts, Products } from './components/Products'
+import { Blogs, DiscoverWines, FeatureBrands, Gifts, Products } from './components/Products'
 import { Category } from './components/Category'
 import { Carousel } from './components/Carousel'
-import { ProductCarousel } from './ProductCarousel'
+import { BeerProductCarousel, MixedCollection, NewArrivals, ProductCarousel, WineAccesories } from './ProductCarousel'
 
 function App() {
    return (
@@ -13,6 +13,15 @@ function App() {
     <Products/>
     <Gifts/>
     <ProductCarousel/>
+    <DiscoverWines/>
+     <NewArrivals/>
+
+    
+    <BeerProductCarousel/>
+    <FeatureBrands/>
+    <MixedCollection/>
+    <WineAccesories/>
+    <Blogs/>
     
     </>
    
