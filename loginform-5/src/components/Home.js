@@ -79,11 +79,11 @@ const Home = () => {
         const addProductsToServer = async (product) => {
             const sampleProducts = 
               {
-                 "name": "{name}",
-                "email": "{email}",
-                "date": "{date}",
-                "password": "{password}",
-                "cart":[]
+                 "name": product.name,
+                "email": product.email,
+                "date": product.date,
+                "password": product.password,
+                "cart":{}
               }
             try {
               const response = await axios.post('https://react-project-sutlej-dependency-020-3.onrender.com/users', sampleProducts);
