@@ -40,7 +40,8 @@ import {
   export default function LargeWithLogoCentered() {
     return (
       <Box
-        bg={useColorModeValue('gray.50', 'gray.900')}
+      bg="#dbdbdb"
+        // bg={useColorModeValue('gray.50', 'gray.900')}
         color={useColorModeValue('gray.700', 'gray.200')}>
         <Container as={Stack} maxW={'6xl'} py={10} px={20}>
           <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
@@ -113,8 +114,9 @@ import {
             </Stack>
           </SimpleGrid>
         </Container>
-        <Box py={10}>
+        <Box py={10} >
           <Flex
+          
             align={'center'}
             _before={{
               content: '""',
@@ -132,7 +134,7 @@ import {
             }}>
             <Logo />
           </Flex>
-          <Text pt={6} fontSize={'sm'} textAlign={'center'}>
+          <Text pt={6} fontSize={'sm'} textAlign={'center'} bg={'white'}>
           © Wine Park, 2024. All Rights Reserved
           </Text>
         </Box>

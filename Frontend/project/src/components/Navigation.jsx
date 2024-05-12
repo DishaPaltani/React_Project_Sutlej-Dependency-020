@@ -50,14 +50,9 @@ export default function WithSubnavigation() {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            Logo
-          </Text>
-
+        {/* Removed logo part */}
+        <Flex flex={{ base: 1 }} justify={'center'}>
+          {/* Centered items */}
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
@@ -74,81 +69,140 @@ export default function WithSubnavigation() {
 const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={'row'} spacing={4} align="center">
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <Popover trigger={'hover'} placement={'bottom-start'}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}>
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
+          {navItem.children ? (
+            <Popover trigger={'hover'} placement={'bottom-start'}>
+              <PopoverTrigger>
+                <Link
+                  p={2}
+                  href={navItem.href ?? '#'}
+                  fontSize={'sm'}
+                  fontWeight={500}
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: 'none',
+                    color: linkHoverColor,
+                  }}>
+                  {navItem.label}
+                </Link>
+              </PopoverTrigger>
 
-            {navItem.children && (
               <PopoverContent
-                border={0}
+                border={1}
+                borderColor={useColorModeValue('gray.200', 'gray.700')}
                 boxShadow={'xl'}
-                bg={popoverContentBgColor}
+                bg={useColorModeValue('white', 'gray.800')}
                 p={4}
                 rounded={'xl'}
-                minW={'sm'}>
-                <Stack>
+                minW={navItem.children.length === 1 ? 'sm' : 'lg'}
+                _focus={{ outline: 'none' }}>
+                <Stack direction="row">
                   {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
+                    <Box key={child.label} w={navItem.children.length === 1 ? '100%' : '33%'}>
+                      <DesktopSubNav heading={child.label} items={child.items} />
+                    </Box>
                   ))}
                 </Stack>
               </PopoverContent>
-            )}
-          </Popover>
+            </Popover>
+          ) : (
+            <Link
+              p={2}
+              href={navItem.href ?? '#'}
+              fontSize={'sm'}
+              fontWeight={500}
+              color={linkColor}
+              _hover={{
+                textDecoration: 'none',
+                color: linkHoverColor,
+              }}>
+              {navItem.label}
+            </Link>
+          )}
         </Box>
       ))}
+      {/* Add a regular link for Beer */}
+      <Link
+        p={2}
+        href="#"
+        fontSize={'sm'}
+        fontWeight={500}
+        color={linkColor}
+        _hover={{
+          textDecoration: 'none',
+          color: linkHoverColor,
+        }}>
+        Beer
+      </Link>
+
+      <Link
+        p={2}
+        href="#"
+        fontSize={'sm'}
+        fontWeight={500}
+        color={linkColor}
+        _hover={{
+          textDecoration: 'none',
+          color: linkHoverColor,
+        }}>
+        New Wines
+      </Link>
+      <Link
+        p={2}
+        href="#"
+        fontSize={'sm'}
+        fontWeight={500}
+        color={linkColor}
+        _hover={{
+          textDecoration: 'none',
+          color: linkHoverColor,
+        }}>
+        Limited Specials
+      </Link>
+      <Link
+        p={2}
+        href="#"
+        fontSize={'sm'}
+        fontWeight={500}
+        color={linkColor}
+        _hover={{
+          textDecoration: 'none',
+          color: linkHoverColor,
+        }}>
+        Wine Accessories
+      </Link>
+      <Link
+        p={2}
+        href="#"
+        fontSize={'sm'}
+        fontWeight={500}
+        color={linkColor}
+        _hover={{
+          textDecoration: 'none',
+          color: linkHoverColor,
+        }}>
+        Blog
+      </Link>
     </Stack>
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
+const DesktopSubNav = ({ heading, items }) => {
   return (
-    <Link
-      href={href}
-      role={'group'}
-      display={'block'}
-      p={2}
-      rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
-      <Stack direction={'row'} align={'center'}>
-        <Box>
-          <Text
-            transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
-            fontWeight={500}>
-            {label}
-          </Text>
-          <Text fontSize={'sm'}>{subLabel}</Text>
-        </Box>
-        <Flex
-          transition={'all .3s ease'}
-          transform={'translateX(-10px)'}
-          opacity={0}
-          _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-          justify={'flex-end'}
-          align={'center'}
-          flex={1}>
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
+    <Box>
+      <Text fontWeight={500} mb={1}>{heading}</Text>
+      <Stack spacing={1}>
+        {items.map((item) => (
+          <Link key={item.label} href={item.href} fontSize="xs">
+            {item.label}
+          </Link>
+        ))}
       </Stack>
-    </Link>
+    </Box>
   );
 };
 
@@ -217,133 +271,187 @@ const MobileNavItem = ({ label, children, href }) => {
   );
 };
 
+
+
 const NAV_ITEMS = [
   {
     label: 'All Wines',
     children: [
       {
-        label: 'Red Wines',
-        subLabel: 'Imited',
-        href: '#',
+        label: 'Red Wines ',
+        items: [
+          { label: 'Cabernet Sauvignon', href: '#' },
+          { label: 'Pinot Noir', href: '#' },
+          { label: 'Malbec', href: '#' },
+          { label: 'Shiraz/Syrah', href: '#' },
+          { label: 'Merlot', href: '#' },
+          { label: 'Sangiovese', href: '#' },
+          { label: 'Tempranillo', href: '#' },
+          { label: 'Grenache', href: '#' },
+          { label: 'Pinotage', href: '#' },
+          { label: 'Nebbiolo', href: '#' },
+          { label: 'Barbera', href: '#' },
+          { label: 'Cabernet Franc', href: '#' },
+          { label: 'Touriga Nacional', href: '#' },
+          { label: 'Ruby Cabernet', href: '#' },
+        ]
       },
       {
-        label: 'New & Noteworthy',
-        subLabel: 'Up-and-coming Designers',
-        href: '#',
+        label: 'White Wine',
+        items: [
+          { label: 'Chardonnay', href: '#' },
+          { label: 'Pinot Noir', href: '#' },
+          { label: 'Sauvignon Blanc', href: '#' },
+          { label: 'Chenin Blanc', href: '#' },
+          { label: 'Pinot Grigio', href: '#' },
+          { label: 'Riesling', href: '#' },
+          { label: 'Torrontes', href: '#' },
+          { label: 'Vermentino', href: '#' },
+          { label: 'Viognier', href: '#' },
+          { label: 'Gruner Veltliner', href: '#' },
+          { label: 'Carricante', href: '#' },
+          { label: 'Loureiro', href: '#' },
+        ]
+      },
+      {
+        label: 'Sparkling',
+        items: [
+          { label: 'Champagne', href: '#' },
+          { label: 'Prosecco', href: '#' },
+          { label: 'Rose', href: '#' },
+          { label: 'Sweet Wine', href: '#' },
+          { label: 'Port Wine', href: '#' },
+          { label: 'Mixed Cases', href: '#' },
+        ]
       },
     ],
   },
   {
-    label: 'New Wines',
+    label: 'Gift Wines',
     children: [
       {
-        label: '',
-        subLabel: 'Find your dream design job',
-        href: '#',
+        label: 'Luxury Selection',
+        items: [
+          { label: 'All Gift Hampers', href: '#' },
+          { label: 'Valentine Day Hampers', href: '#' },
+          { label: 'Gifts By Occasion', href: '#' },
+          { label: 'Birthday', href: '#' },
+          { label: 'Anniversary', href: '#' },
+          { label: 'Thank You', href: '#' },
+          { label: 'Popular Gifts', href: '#' },
+          { label: 'For Him', href: '#' },
+          { label: 'For Her', href: '#' },
+          { label: 'For Connoisseur', href: '#' },
+        ]
       },
       {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
+        label: 'Shop By Price',
+        items: [
+          { label: 'Under ₹ 4000', href: '#' },
+          { label: 'Under ₹ 7000', href: '#' },
+          { label: 'Under ₹ 10000', href: '#' },
+          { label: 'Above ₹ 10000', href: '#' },
+          { label: 'Great Bottles To Gift', href: '#' },
+          { label: 'Champagne/Sparkling', href: '#' },
+          { label: 'White', href: '#' },
+          { label: 'Red', href: '#' },
+        ]
+      },
+      {
+        label: 'Gift Hampers',
+        items: [
+          { label: 'Gift Hampers', href: '#' },
+          { label: 'Gift Vouchers', href: '#' },
+          { label: 'Corporate Gifts', href: '#' },
+        ]
       },
     ],
   },
   {
     label: 'Regions',
-    href: '#',
+    children: [
+      {
+        label: '',
+        items: [
+          { label: 'Argentina', href: '#' },
+          { label: 'Australia', href: '#' },
+          { label: 'Austria', href: '#' },
+          { label: 'Germany', href: '#' },
+          { label: 'India', href: '#' },
+        
+        ]
+      },
+      {
+        label: '',
+        items: [
+          { label: 'New Zealand', href: '#' },
+          { label: 'Portugal', href: '#' },
+          { label: 'South Africa', href: '#' },
+          { label: 'Spain', href: '#' },
+          { label: 'USA', href: '#' },
+    
+        ]
+      },
+      {
+        label: 'Italy',
+        items: [
+          { label: 'Tuscany', href: '#' },
+          { label: 'Piedmont', href: '#' },
+          { label: 'Veneto', href: '#' },
+          { label: 'Alto Adige', href: '#' },
+          { label: 'Sicily', href: '#' },
+          { label: 'Friuli', href: '#' },
+          
+    
+        ]
+      },
+      {
+        label: 'France',
+        items: [
+          { label: 'Champagne', href: '#' },
+          { label: 'Bordeaux', href: '#' },
+          { label: 'Burgundy', href: '#' },
+          { label: 'Rhone', href: '#' },
+          { label: 'Loire Valley', href: '#' },
+         
+        ]
+      },
+      
+    ]
+  }
+  ,
+  {
+    label: 'Discover Wine',
+    children: [
+      {
+        label: 'Wines',
+        items: [
+          { label: 'Fruity Reds', href: '#' },
+          { label: 'Wines Under 3K', href: '#' },
+          { label: 'Bordeaux Wines', href: '#' },
+          { label: 'Burgundy Wines', href: '#' },
+          { label: 'Best Sellers', href: '#' },
+          { label: 'Vivino 4.0+', href: '#' },
+          { label: 'Organic Wines', href: '#' },
+          { label: 'Low Sugar Wine', href: '#' },
+          { label: 'Wine Park Selections', href: '#' },
+        ]
+      },
+    ]
   },
   {
-    label: 'Itly',
-    href: '#',
+    label: 'Brochure',
+    children: [
+      {
+        label: '',
+        items: [
+          { label: 'Bangalore Brochure', href: '#' },
+          { label: 'Delhi Brochure', href: '#' },
+          { label: 'Goa Brochure', href: '#' },
+          { label: 'Maharashtra Brochure', href: '#' },
+        
+        ]
+      },
+    ]
   },
 ];
-
-
-// gikgjgfjg
-import { ReactNode } from 'react';
-import {
-  Box,
-  Flex,
-  Avatar,
-  Link,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
-  useColorMode,
-  Center,
-} from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={'#'}>
-    {children}
-  </Link>
-);
-
-export default function Nav() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  return (
-    <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box>Logo</Box>
-
-          <Flex alignItems={'center'}>
-            <Stack direction={'row'} spacing={7}>
-              <Button onClick={toggleColorMode}>
-                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-              </Button>
-
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={'full'}
-                  variant={'link'}
-                  cursor={'pointer'}
-                  minW={0}>
-                  <Avatar
-                    size={'sm'}
-                    src={'https://avatars.dicebear.com/api/male/username.svg'}
-                  />
-                </MenuButton>
-                <MenuList alignItems={'center'}>
-                  <br />
-                  <Center>
-                    <Avatar
-                      size={'2xl'}
-                      src={'https://avatars.dicebear.com/api/male/username.svg'}
-                    />
-                  </Center>
-                  <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
-                </MenuList>
-              </Menu>
-            </Stack>
-          </Flex>
-        </Flex>
-      </Box>
-    </>
-  );
-}
