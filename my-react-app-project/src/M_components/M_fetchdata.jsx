@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import ProductCard from './ProductCard';
 
-import ProductCard from './ProductCards';
+import ProductCard from './M_ProductCards';
 
 import "./fetchdata.css";
 
