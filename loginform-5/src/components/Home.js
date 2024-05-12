@@ -5,7 +5,8 @@ import SIgn_img from './SIgn_img'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const Home = () => {
 
@@ -75,6 +76,23 @@ const Home = () => {
             localStorage.setItem("useryoutube",JSON.stringify([...data,inpval]));
 
         }
+        const addProductsToServer = async (product) => {
+            const sampleProducts = 
+              {
+                 "name": "{name}",
+                "email": "{email}",
+                "date": "{date}",
+                "password": "{password}",
+                "cart":[]
+              }
+            try {
+              const response = await axios.post('https://react-project-sutlej-dependency-020-3.onrender.com/users', sampleProducts);
+              console.log('Products added:', response.data);
+            } catch (error) {
+              console.error('Error adding products:', error);
+            }
+          };
+          addProductsToServer(inpval);
 
     }
 
