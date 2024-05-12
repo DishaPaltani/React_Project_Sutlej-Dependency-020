@@ -63,7 +63,7 @@ const Details = () => {
                             <Modal.Header closeButton>
                                 <Modal.Title>{logindata[0].name} 😄</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>Wish you many many happy returns of the day ! 🍰</Modal.Body>
+                            <Modal.Body>Welcome to our wine world ! 🍰</Modal.Body>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={handleClose}>
                                     Close
