@@ -4,35 +4,32 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
 
-function Navigation() {
-  return (
-    <nav>
-        <div className='nav-container'>
-        <input 
-        type="text" 
-        className='search-input' 
-        placeholder='Search your Wine' 
-        />
+const Navigation = ({ handleInputChange, query }) => {
+    return (
+      <nav>
+        <div className="nav-container">
+          <input
+            className="search-input"
+            type="text"
+            onChange={handleInputChange}
+            value={query}
+            placeholder="Enter your wine."
+          />
         </div>
         <div className="profile-container">
-            <a href="#">
-                <FiHeart className='nav-icons'/>
-
-            </a>
-
-            <a href="#">
-                <AiOutlineShoppingCart className='nav-icons' />
-            </a>
-
-            <a href="#">
-                <AiOutlineUserAdd className='nav-icons' />
-            </a>
+          <a href="#">
+            <FiHeart className="nav-icons" />
+          </a>
+          <a href="">
+            <AiOutlineShoppingCart className="nav-icons" />
+          </a>
+          <a href="">
+            <AiOutlineUserAdd className="nav-icons" />
+          </a>
         </div>
-    </nav>
-    
-    
-  )
-}
+      </nav>
+    );
+  };
 
 
 export default Navigation;
