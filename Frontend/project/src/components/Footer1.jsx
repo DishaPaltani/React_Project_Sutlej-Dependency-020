@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Flex, Icon, Link } from '@chakra-ui/react';
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -15,6 +15,9 @@ const Footer = () => {
         <Link href="#" mx="4">
           <Icon as={FaTwitter} boxSize={10} color="#222222#222" />
         </Link>
+        <Link href="#" mx="4" >
+  <Icon as={FaLinkedin} boxSize={10} color="#222222#722f37" />
+</Link>
       </Flex>
     </Box>
   );
