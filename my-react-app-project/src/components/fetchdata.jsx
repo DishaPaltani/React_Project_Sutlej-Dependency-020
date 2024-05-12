@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ProductCard from './ProductCard';
+// import ProductCard from './ProductCard';
+
+import ProductCard from './ProductCards';
+
 import "./fetchdata.css";
 
 const Mycard = () => {
@@ -8,7 +11,7 @@ const Mycard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://react-project-sutlej-dependency-020-3.onrender.com/catalog`); 
+        const response = await fetch(`https://react-project-sutlej-dependency-020-3.onrender.com/catalog`);
         const jsonData = await response.json();
         setCardsData(jsonData);
       } catch (error) {

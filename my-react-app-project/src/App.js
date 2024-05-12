@@ -1,11 +1,20 @@
-import Mycard from './components/fetchdata';
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Mycard from './components/fetchdata';
+import ProductDetails from './components/showproductDetails';
 
 function App() {
   return (
-    <React.Fragment>
-      <Mycard> </Mycard>
-    </React.Fragment>
+    <Router>
+      <Link to="/fetchusercard">
+        <button>Show Cart</button>
+      </Link>
+
+      <Routes>
+        <Route path="/" element={<Mycard />} />
+        <Route path="/showproductDetails/:productTitle" element={<ProductDetails />} />
+      </Routes>
+    </Router>
   );
 }
 

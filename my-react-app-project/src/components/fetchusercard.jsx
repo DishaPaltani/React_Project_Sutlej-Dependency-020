@@ -4,7 +4,9 @@ import React, { useState, useEffect } from 'react';
 // import logindata from './loginsetup';
 // https://react-project-sutlej-dependency-020-3.onrender.com/users?email=khalil@gmail.com
 
-const Mycard = () => {
+import Showcart from './showcart';
+
+const Usercards = () => {
   const [cardsData, setCardsData] = useState([]);
 
   useEffect(() => {
@@ -26,12 +28,12 @@ const Mycard = () => {
       <h1>Products</h1>
       <div className="card-container">
         {cardsData.cart.map((card, index) => (
-            
-        //   <ProductCard key={index} product={card} />
+            // <showcart/>
+          <Showcart key={index} product={card} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Mycard;
+export default Usercards;
