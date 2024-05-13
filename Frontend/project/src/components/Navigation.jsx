@@ -66,6 +66,7 @@
 //   );
 // }
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Box,
   Flex,
@@ -74,7 +75,7 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
+  Link as ChakraLink,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -231,7 +232,7 @@ const DesktopNav = () => {
 
       <Link
         p={2}
-        href="#"
+        to="/newwines"
         fontSize={'sm'}
         fontWeight={500}
         color={linkColor}
