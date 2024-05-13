@@ -93,6 +93,7 @@ function App() {
         
         <Routes>
           <Route path='/Call' element={<Call />} />
+          <Route path='/details' element={<Call />} />
           <Route path='/newwines' element={<App2 />} />
         <Route path='/Home' element={<Home />} />
       <Route path='/login' element={<Login />} />
