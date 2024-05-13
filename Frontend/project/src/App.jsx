@@ -71,6 +71,7 @@ import Navbar from './components/MainNav';
 import LargeWithLogoCentered from './components/Footer';
 import Footer from './components/Footer1';
 import Subnav from './components/Subnav2';
+import { Axios } from 'axios';
 
 
 import Home from '../src/components/Signin/Home';
@@ -93,15 +94,16 @@ function App() {
         
         <Routes>
           <Route path='/Call' element={<Call />} />
+          <Route path='/details' element={<Call />} />
           <Route path='/newwines' element={<App2 />} />
         <Route path='/Home' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/details' element={<Details />} />
       <Route path='*' element={<Errror />} />
-      {/* <Route path='/Cart' element={<Cart />} /> */}
+      <Route path='/Cart' element={<Usercards />} />
 
 
-      <Route path="/Cart" element={<Usercards />} />
+      <Route path="/new" element={<Mycard />} />
         <Route path="/M_showproductDetails/:productTitle" element={<ProductDetails />} />
 
         </Routes>
