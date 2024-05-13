@@ -244,7 +244,7 @@ const DesktopNav = () => {
       </Link>
       <Link
         p={2}
-        href="#"
+        to="/new"
         fontSize={'sm'}
         fontWeight={500}
         color={linkColor}
